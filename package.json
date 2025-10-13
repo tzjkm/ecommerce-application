@@ -1,12 +1,16 @@
 {
   "name": "nextjs-ecommerce-frontend",
   "version": "1.0.0",
+  "homepage": "https://tzjkm.github.io/ecommerce-application",
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
-    "start": "next start"
-  },
+    "build": "next build && next export",
+    "start": "next start",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d out"
+  }
+  ,
   "dependencies": {
     "next": "^15.5.4",
     "react": "^19.2.0",
@@ -15,6 +19,7 @@
   },
   "devDependencies": {
     "eslint": "latest",
-    "eslint-config-next": "latest"
+    "eslint-config-next": "latest",
+    "gh-pages": "^6.3.0"
   }
 }
