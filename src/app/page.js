@@ -8,9 +8,11 @@ export default function Home() {
 	return (
 		<>
 			<HeroBanner />
-			<section className="my-8">
-				<h2 className="text-2xl font-bold mb-4">Featured Products</h2>
-				<ProductList products={featured} />
+			<section className="my-12">
+				<h2 className="mb-6 text-2xl font-bold tracking-tight text-gray-900">Featured Products</h2>
+				<div className="card p-4">
+					<ProductList products={featured} />
+				</div>
 			</section>
 		</>
 	);
