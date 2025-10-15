@@ -1,13 +1,15 @@
-"use client";
+"use client"; // Interactive component (inputs and buttons)
 import React from "react";
-import { useCart } from "../context/CartContext";
-import { formatPrice } from "../utils/formatPrice";
+import { useCart } from "../context/CartContext"; // Update cart quantities
+import { formatPrice } from "../utils/formatPrice"; // Currency formatting
 
 const CartItem = ({ item, onRemove }) => {
 	const { updateItem } = useCart();
 
+	// Parse and update quantity when input changes
 	const handleQuantityChange = (e) => {
-		updateItem(item.id, parseInt(e.target.value));
+		const next = Math.max(1, Number.parseInt(e.target.value || "1", 10));
+		updateItem(item.id, next);
 	};
 
 	return (
@@ -37,4 +39,4 @@ const CartItem = ({ item, onRemove }) => {
 	);
 };
 
-export default CartItem;
+export default CartItem; // Default export for convenience

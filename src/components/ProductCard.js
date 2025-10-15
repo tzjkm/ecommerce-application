@@ -1,18 +1,21 @@
-"use client";
-import React, { useContext } from "react";
-import { useCart } from "../context/CartContext";
-import { formatPrice } from "../utils/formatPrice";
-import SafeImage from "./SafeImage";
+"use client"; // Client component: interactive button uses hooks
+import React from "react";
+import { useCart } from "../context/CartContext"; // Add to cart action
+import { formatPrice } from "../utils/formatPrice"; // Format price neatly
+import SafeImage from "./SafeImage"; // Image with graceful fallback
 
 const ProductCard = ({ product }) => {
-	const { addItem } = useCart();
+	const { addItem } = useCart(); // Access cart action from context
 
+	// Add the product to the cart with default quantity of 1
 	const handleAddToCart = () => {
 		addItem(product);
 	};
 
 	return (
+		// Card container with hover elevation
 		<div className="card group overflow-hidden transition-shadow hover:shadow-lg">
+			{/* Image area with 4:3 aspect ratio */}
 			<div className="aspect-[4/3] overflow-hidden bg-gray-50">
 				<SafeImage
 					src={product.image}
@@ -21,9 +24,10 @@ const ProductCard = ({ product }) => {
 					fallback="/images/product-placeholder.png"
 				/>
 			</div>
+			{/* Details and add-to-cart action */}
 			<div className="p-4">
 				<h2 className="line-clamp-2 text-base font-semibold text-gray-900">{product.title}</h2>
-				<p className="mt-1 text-brand-700 font-bold">{formatPrice(product.price)}</p>
+				<p className="mt-1 font-bold text-brand-700">{formatPrice(product.price)}</p>
 				<button onClick={handleAddToCart} className="btn btn-primary mt-4 w-full">
 					Add to Cart
 				</button>
@@ -32,4 +36,4 @@ const ProductCard = ({ product }) => {
 	);
 };
 
-export default ProductCard;
+export default ProductCard; // Named default export for straightforward imports
